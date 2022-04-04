@@ -1,6 +1,6 @@
 package racing.view;
 
-import racing.Racing;
+import racing.model.Racing;
 import racing.model.Car;
 
 public class OutputView {

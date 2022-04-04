@@ -1,7 +1,4 @@
-package racing;
-
-import racing.model.Car;
-import racing.model.RacingInfo;
+package racing.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +13,7 @@ public class Racing {
         this.racingInfo = racingInfo;
     }
 
-    public void run(racing.Racing.Callback callback) {
+    public void run(Racing.Callback callback) {
         int tryCount = racingInfo.getTryCount();
         List<Car> carList = racingInfo.getCarList();
 
