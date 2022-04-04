@@ -1,6 +1,7 @@
-package view;
+package racing.view;
 
-import racing.RacingInfo;
+import racing.exception.RacingException;
+import racing.model.RacingInfo;
 
 import java.util.Scanner;
 
@@ -23,33 +24,31 @@ public class InputView {
 
     private void inputCarNames() throws Exception {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String carNames = scanner.next();
-
-        validateCarNames(carNames);
-
-        racingInfo.parseCarList(carNames);
+        racingInfo.parseCarList(parseCarNames(scanner.next()));
     }
 
-    private void validateCarNames(String carNames) throws Exception {
+    private String parseCarNames(String carNames) throws Exception {
         if (carNames.trim().isEmpty()) {
-            throw new Exception("[ERROR] 자동차 이름을 입력하세요");
+            throw new RacingException("자동차 이름을 입력하세요");
         }
+
+        if (carNames.length() > 5) {
+            throw new RacingException("자동차 이름은 5글자 이상 입력할 수 없습니다");
+        }
+
+        return carNames;
     }
 
     private void inputTryCount() throws Exception {
         System.out.println("시도할 회수는 몇회인가요?");
-        String tryCountStr = scanner.next();
-
-        int tryCount = validateTryCount(tryCountStr);
-
-        racingInfo.parseTryCount(tryCount);
+        racingInfo.parseTryCount(parseTryCount(scanner.next()));
     }
 
-    private int validateTryCount(String tryCountStr) throws Exception {
+    private int parseTryCount(String tryCountStr) throws Exception {
         try {
             return Integer.parseInt(tryCountStr);
         } catch (Exception e) {
-            throw new Exception("[ERROR] 시도 횟수는 숫자여야 한다.");
+            throw new RacingException("시도 횟수는 숫자여야 한다.");
         }
     }
 }

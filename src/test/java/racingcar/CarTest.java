@@ -1,7 +1,7 @@
 package racingcar;
 
 import org.junit.jupiter.api.Test;
-import view.InputView;
+import racing.view.InputView;
 
 import java.util.Scanner;
 

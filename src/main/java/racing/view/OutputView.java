@@ -1,8 +1,7 @@
-package view;
+package racing.view;
 
-import racing.Car;
 import racing.Racing;
-import racing.RacingCallback;
+import racing.model.Car;
 
 public class OutputView {
     private final Racing racing;
@@ -19,21 +18,10 @@ public class OutputView {
         System.out.printf("최종우승 : %s%n", racing.getWinnerNames());
     }
 
-    public void printStatus(Car car) {
-        StringBuilder out = new StringBuilder();
-        out.append(car.getName()).append(" : ");
-
-        for (int i = 0; i < car.getPosition(); i++) {
-            out.append("-");
-        }
-
-        System.out.println(out);
-    }
-
-    private final RacingCallback outputRacingCallback = new RacingCallback() {
+    private final Racing.Callback outputRacingCallback = new Racing.Callback() {
         @Override
         public void onCarMoved(Car car) {
-            printStatus(car);
+            System.out.println(car.getStatus());
         }
 
         @Override

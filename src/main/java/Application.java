@@ -1,5 +1,5 @@
-import view.InputView;
-import view.OutputView;
+import racing.view.InputView;
+import racing.view.OutputView;
 
 import java.util.Scanner;
 
