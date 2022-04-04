@@ -25,18 +25,29 @@ public class InputView {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String carNames = scanner.next();
 
-        if (!carNames.contains(",")) {
-            throw new Exception("[ERROR] 자동차이름은 ,로 구분 하여야한다");
-        }
+        validateCarNames(carNames);
 
         racingInfo.parseCarList(carNames);
     }
 
+    private void validateCarNames(String carNames) throws Exception {
+        if (carNames.trim().isEmpty()) {
+            throw new Exception("[ERROR] 자동차 이름을 입력하세요");
+        }
+    }
+
     private void inputTryCount() throws Exception {
+        System.out.println("시도할 회수는 몇회인가요?");
+        String tryCountStr = scanner.next();
+
+        int tryCount = validateTryCount(tryCountStr);
+
+        racingInfo.parseTryCount(tryCount);
+    }
+
+    private int validateTryCount(String tryCountStr) throws Exception {
         try {
-            System.out.println("시도할 회수는 몇회인가요?");
-            int tryCount = scanner.nextInt();
-            racingInfo.parseTryCount(tryCount);
+            return Integer.parseInt(tryCountStr);
         } catch (Exception e) {
             throw new Exception("[ERROR] 시도 횟수는 숫자여야 한다.");
         }

@@ -14,17 +14,7 @@ public class OutputView {
     public void printRacingResult() {
         System.out.println("실행결과");
 
-        racing.run(new RacingCallback() {
-            @Override
-            public void onCarMoved(Car car) {
-                printStatus(car);
-            }
-
-            @Override
-            public void onAllCarMoved() {
-                System.out.println();
-            }
-        });
+        racing.run(outputRacingCallback);
 
         System.out.printf("최종우승 : %s%n", racing.getWinnerNames());
     }
@@ -39,4 +29,16 @@ public class OutputView {
 
         System.out.println(out);
     }
+
+    private final RacingCallback outputRacingCallback = new RacingCallback() {
+        @Override
+        public void onCarMoved(Car car) {
+            printStatus(car);
+        }
+
+        @Override
+        public void onAllCarMoved() {
+            System.out.println();
+        }
+    };
 }
