@@ -1,3 +1,6 @@
+# 우아한스터디 깃허브 그냥 받아서 해봄
+https://github.com/woowahan-study-personal/java-racingcar-precourse
+
 # 미션 - 자동차 경주 게임
 
 ## 🚀 기능 요구사항
