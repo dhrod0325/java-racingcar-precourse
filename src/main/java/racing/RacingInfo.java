@@ -5,22 +5,18 @@ import java.util.List;
 
 public class RacingInfo {
     private final List<Car> carList = new ArrayList<>();
-    private final int tryCount;
+    private int tryCount;
 
-    public RacingInfo(String carNames, String tryCount) {
-        this.carList.addAll(this.parseCarList(carNames));
-        this.tryCount = Integer.parseInt(tryCount);
-    }
-
-    private List<Car> parseCarList(String carNames) {
-        List<Car> result = new ArrayList<>();
+    public void parseCarList(String carNames) {
         String[] splitCarNames = carNames.split(",");
 
         for (String carName : splitCarNames) {
-            result.add(new Car(carName));
+            this.carList.add(new Car(carName));
         }
+    }
 
-        return result;
+    public void parseTryCount(int tryCount) {
+        this.tryCount = tryCount;
     }
 
     public List<Car> getCarList() {

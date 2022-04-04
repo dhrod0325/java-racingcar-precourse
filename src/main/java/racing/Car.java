@@ -19,17 +19,6 @@ public class Car {
         position += move;
     }
 
-    public void printStatus() {
-        StringBuilder out = new StringBuilder();
-        out.append(name).append(" : ");
-
-        for (int i = 0; i < position; i++) {
-            out.append("-");
-        }
-
-        System.out.println(out);
-    }
-
     public void move() {
         if (isStop()) return;
 
